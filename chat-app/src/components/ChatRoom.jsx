@@ -14,7 +14,7 @@ const ChatRoom = ({username}) => {
     isTyping,
     sendMessage,
     handleTyping 
-  } = useWebSocket(wsUrl,username)
+  } = useWebSocket(`ws://${wsUrl}`,username)
   console.log(username)
   console.log(messages)
     return (
