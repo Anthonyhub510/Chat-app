@@ -6,6 +6,7 @@ import { MessageInput } from './MessageInput'
 import { UserList } from './UsersList'
 
 const ChatRoom = ({username}) => {
+  const wsUrl = import.meta.env.VITE_BACKEND_URL
   const {
     isConnected,
     messages,
@@ -13,7 +14,7 @@ const ChatRoom = ({username}) => {
     isTyping,
     sendMessage,
     handleTyping 
-  } = useWebSocket("ws://localhost:3001",username)
+  } = useWebSocket(wsUrl,username)
   console.log(username)
   console.log(messages)
     return (
