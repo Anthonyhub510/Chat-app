@@ -3,6 +3,7 @@ const express = require('express');
 const WebSocket = require('ws');
 const http = require('http');
 const app = express();
+const cors = require('cors');
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
@@ -10,6 +11,13 @@ const clients = new Map();
 
 // app.use(express.static('public')); // Serve static files if needed
 
+const corsOptions = {
+  origin: 'https://chat-nest-hazel.vercel.app/', // Allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+
+};
+app.use(cors(corsOptions));
 wss.on('connection', (ws) => {
   console.log('New client connected');
 
