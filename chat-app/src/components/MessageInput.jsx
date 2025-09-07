@@ -11,9 +11,10 @@ export const MessageInput = ({
   const [message, setMessage] = useState('');
   const [showPicker, setShowpicker] = useState(false);
   const [emoji, setEmoji] = useState('');
+  const [audioBlob,setAudioBlob] = useState(null)
   const handleAudiorecord = (blob) =>{
     console.log(blob)
-   
+
   }
   
   const handleSubmit = (e) => {

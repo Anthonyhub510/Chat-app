@@ -1,11 +1,15 @@
 import { Mic, MicOff, OctagonX } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { AppContext } from '../AppContexts';
 
 function VoiceRecorder({ onRecordingComplete }) {
   const [recording, setRecording] = useState(false);
   const [audioBlob, setAudioBlob] = useState(null);
+  const {setAudio} = useContext(AppContext);
   const [mediaRecorder, setMediaRecorder] = useState(null);
-
+setAudio(audioBlob)
+  console.log(audioBlob)
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ audio: true })
       .then(stream => {
