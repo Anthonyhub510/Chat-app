@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const MessageComponent = ({message,isOwn}) => {
+    const[messageContent,setmessageContent]= useState(message)
     
         const formatTime = (date)=>{
     return new Date(date).toLocaleTimeString([],{
        hour:"2-digit",
        minute:"2-digit" 
     })
-        }
+}
+console.log(messageContent)
+
         if(message.type==="system"){
             return(
                 <div className='flex justify-center my-2'>
@@ -28,6 +31,7 @@ const MessageComponent = ({message,isOwn}) => {
             </div>
         )}
         <div className='text-sm break-words'>{message.content}</div>
+       {/* <audio src={URL.createObjectURL(message.audio)} controls /> */}
         <div className={`text-xs mt-1 ${isOwn? "text-blue-100 ":"text-gray-500"}`}>
             {formatTime(message.timestamp)}
         </div>

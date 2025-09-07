@@ -1,9 +1,11 @@
 
+import {useState } from "react";
 import { useWebSocket } from '../../hooks/useWebSocket'
 import { MessageCircle, Wifi, WifiOff } from 'lucide-react'
 import { MessageList } from './MessageList'
 import { MessageInput } from './MessageInput'
 import { UserList } from './UsersList'
+import VoiceRecorder from './voiceRecorder'
 
 const ChatRoom = ({username}) => {
   const wsUrl = import.meta.env.VITE_BACKEND_URL
@@ -14,9 +16,12 @@ const ChatRoom = ({username}) => {
     isTyping,
     sendMessage,
     handleTyping 
-  } = useWebSocket(`wss://${wsUrl}`,username)
+  } = useWebSocket(`ws://${wsUrl}`,username)
   console.log(username)
-  console.log(messages)
+  console.log(users)
+
+    const [audioBlob,setAudioBlob] = useState(null)
+
     return (
   <div className="flex h-screen bg-white">
       {/* Main Chat Area */}
@@ -70,6 +75,7 @@ const ChatRoom = ({username}) => {
         currentUsername={username}
         isConnected={isConnected}
       />
+
     </div>
   )
 }

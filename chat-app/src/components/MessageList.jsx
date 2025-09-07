@@ -6,6 +6,7 @@ export const MessageList = ({
   messages, 
   currentUsername, 
   isTyping,
+
 }) => {
   const messagesEndRef = useRef(null);
 
@@ -17,12 +18,12 @@ export const MessageList = ({
     scrollToBottom();
   }, [messages, isTyping]);
 
-  console.log(messages)
+  
   return (
     <div className="flex-1 overflow-y-auto p-4 space-y-2">
-      {messages.map((message) =>(
+      {messages.map((message,index) =>(
         <MessageComponent
-          key={message.id}
+          key={index}
           message={message}
           isOwn={message.username === currentUsername}
         />
